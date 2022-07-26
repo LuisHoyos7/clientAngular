@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserRoutingModule } from './user-routing.module';
 import { IndexComponent } from './index/index.component';
@@ -11,7 +12,9 @@ import { EditComponent } from './edit/edit.component';
   declarations: [IndexComponent, CreateComponent, EditComponent],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

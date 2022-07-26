@@ -28,35 +28,32 @@ export class UserService {
     private router: Router) { }
 
 getAll(): Observable<User[]> {
-   return this.httpClient.get<User[]>(this.apiURL,this.httpOptions)
+   return this.httpClient.get<User[]>(this.apiURL)
    .pipe(
      catchError(this.errorHandler)
    )
  }
 
- create(user : any): Observable<User> {
-   return this.httpClient.post<User>(this.apiURL, JSON.stringify(user), this.httpOptions)
-   .pipe(
-     catchError(this.errorHandler)
-   )
- }
+  store(user: any): Observable<any> {
+    return this.httpClient.post("http://serverLaravel.test/api/user_apis/store", user,this.httpOptions);
+  }
 
  find(id : any): Observable<User> {
-   return this.httpClient.get<User>(this.apiURL + id)
+   return this.httpClient.get<User>(this.apiURL  + id, this.httpOptions)
    .pipe(
      catchError(this.errorHandler)
    )
  }
 
  update(id : any, user : any): Observable<User> {
-   return this.httpClient.put<User>(this.apiURL + id, JSON.stringify(user), this.httpOptions)
+   return this.httpClient.put<User>(this.apiURL + 'update/'+ id, JSON.stringify(user), this.httpOptions)
    .pipe(
      catchError(this.errorHandler)
    )
  }
 
  delete(id: any){
-   return this.httpClient.delete<User>(this.apiURL + id, this.httpOptions)
+   return this.httpClient.delete<User>(this.apiURL+'delete/' + id, this.httpOptions)
    .pipe(
      catchError(this.errorHandler)
    )
@@ -73,7 +70,7 @@ getAll(): Observable<User[]> {
  }
 
  login(user: any): Observable<any> {
-  return this.httpClient.post("http://serverLaravel.test/api/auth/login", user);
-}
+    return this.httpClient.post("http://serverLaravel.test/api/auth/login", user);
+ }
 
 }

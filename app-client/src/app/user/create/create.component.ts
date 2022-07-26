@@ -10,37 +10,48 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
 
-  
+  name = null;
+  last_name = null;
+  identification_number = null;
+  birth_date = null;
+  password = null;
 
   constructor(
-    public personService: UserService,
-    private router: Router,
-    public form :  FormGroup
-    
+    public userService: UserService,
+    private router: Router
+    // public form: FormGroup
   ) { }
 
   ngOnInit(): void {
 
-    this.form = new FormGroup({
-      name:  new FormControl('', [ Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+') ]),
-      email: new FormControl('', [ Validators.required, Validators.email ]),
-      phone: new FormControl('', [ Validators.required, Validators.pattern("^[0-9]*$") ])
-    });
+    // this.form = new FormGroup({
+    //   name:  new FormControl('', [ Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+') ]),
+    //   email: new FormControl('', [ Validators.required, Validators.email ]),
+    //   phone: new FormControl('', [ Validators.required, Validators.pattern("^[0-9]*$") ])
+    // });
 
   }
 
-  get f(){
-    return this.form.controls;
-  }
+  // get f(){
+  //   return this.form.controls;
+  // }
 
-  submit(){
-    console.log(this.form.value);
-    this.personService.create(this.form.value).subscribe(res => {
-         console.log('Person created successfully!');
-         this.router.navigateByUrl('person/index');
-    })
+  store(){
+
+    const user = {
+        name: this.name, 
+        last_name: this.last_name,
+        identification_number : this.identification_number,
+        birth_date : this.birth_date,
+        password : this.password,
+        identification_type : 1
+    };
+
+    console.log(user);
+      this.userService.store(user).subscribe( data => {
+        this.router.navigateByUrl('user/index');
+      });
   }
 
 }
-
 

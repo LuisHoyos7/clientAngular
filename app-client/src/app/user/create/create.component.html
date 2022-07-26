@@ -1,1 +1,66 @@
-<p>create works!</p>
+<div>
+    <div class="d-flex justify-content-between pr-5 pl-5 pt-0">
+      <h4>Form customer</h4>
+      <a href="#" routerLink="/user/index" class="btn btn-primary">Back</a>
+    </div>
+  
+    <hr/>
+  
+      <form>
+          <div class="form-group row pl-5 pr-5">
+              <div class="col-md-6 ">
+                <label for="title">Name:</label>
+                <input
+                  id="name"
+                  [(ngModel)]="name"
+                  type="text"
+                  name="name"
+                  required
+                  class="form-control">
+              </div>
+              <div class="col-md-6 ">
+                <label for="email">last name:</label>
+                <input
+                  [(ngModel)]="last_name"
+                  id="last_name"
+                  type="text"
+                  required
+                  name="last_name"
+                  class="form-control">
+              </div>
+              <div class="col-md-6 ">
+                <label for="phone">Identification Number</label>
+                <input
+                  [(ngModel)]="identification_number"
+                  id="identification_number"
+                  type="number"
+                  required
+                  name="identification_number"
+                  class="form-control">
+              </div>
+
+              <div class="col-md-6 ">
+                <label for="phone">Birth Date</label>
+                <input
+                  [(ngModel)]="birth_date"
+                  id="birth_date"
+                  type="date"
+                  required
+                  name="birth_date"
+                  class="form-control">
+              </div>
+
+              <div class="col-md-6 ">
+                <label for="phone">password</label>
+                <input
+                  [(ngModel)]="password"
+                  id="phone"
+                  name="password"
+                  required="required"
+                  type="password"
+                  class="form-control">
+              </div>
+          </div>
+          <button class="btn btn-primary ml-5" type="submit" (click)="store()">Guardar</button>
+      </form>
+  </div>
